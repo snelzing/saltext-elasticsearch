@@ -216,6 +216,14 @@ class MockElasticIndices:
             raise TransportError("customer error", (123, 0))
         return {"_shards": {"failed": 0, "successful": 0, "total": 0}}
 
+    def flush_synced(self, hosts=None, profile=None, **kwargs):
+        """
+        Mock of flush_synced method
+        """
+        if self.failure:
+            raise TransportError("customer error", (123, 0))
+        return {"_shards": {"failed": 0, "successful": 0, "total": 0}}
+
 
 class MockElasticCluster:
     """

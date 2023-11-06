@@ -48,9 +48,9 @@ def configure_loader_modules():
     not HAS_ELASTIC,
     reason="Install elasticsearch-py before running Elasticsearch unit tests.",
 )
-class ElasticsearchTestCase(TestCase):
+class ElasticsearchBaseTestCase(object):
     """
-    Test cases for salt.modules.elasticsearch 8+
+    Test cases for salt.modules.elasticsearch
     """
 
     @staticmethod
@@ -1422,7 +1422,7 @@ class ElasticsearchTestCase(TestCase):
 
     def test_flush_succeeds(self):
         """
-        Test if flush_synced succeeds
+        Test if flush succeeds
         """
         expected_return = {"_shards": {"failed": 0, "successful": 0, "total": 0}}
         sargs = {
@@ -1437,7 +1437,7 @@ class ElasticsearchTestCase(TestCase):
 
     def test_flush_failure(self):
         """
-        Test if flush_synced fails with CommandExecutionError
+        Test if flush fails with CommandExecutionError
         """
         fake_es = MagicMock(return_value=MockElastic(failure=True))
         with patch.object(elasticsearch_module.ESModule, "_get_instance", fake_es):
@@ -1786,3 +1786,36 @@ class ElasticsearchTestCase(TestCase):
                 repository="foo",
                 snapshot="foo",
             )
+
+if ES_MAJOR_VERSION < 8:
+    class Elasticsearch6TestCase(ElasticsearchBaseTestCase, TestCase):
+        """
+        Test cases for Elasticsearch 6-7
+        """
+        def test_flush_synced_succeeds(self):
+            """
+            Test if flush_synced succeeds
+            """
+            expected_return = {"_shards": {"failed": 0, "successful": 0, "total": 0}}
+            sargs = {
+                "index": "_all",
+                "ignore_unavailable": True,
+                "allow_no_indices": True,
+                "expand_wildcards": "all",
+            }
+            fake_es = MagicMock(return_value=MockElastic())
+            with patch.object(elasticsearch_module.ESModule, "_get_instance", fake_es):
+                assert elasticsearch_module.flush_synced(**sargs) == expected_return
+
+        def test_flush_synced_failure(self):
+            """
+            Test if flush_synced fails with CommandExecutionError
+            """
+            fake_es = MagicMock(return_value=MockElastic(failure=True))
+            with patch.object(elasticsearch_module.ESModule, "_get_instance", fake_es):
+                pytest.raises(CommandExecutionError, elasticsearch_module.flush_synced)
+else:
+    class Elasticsearch8TestCase(ElasticsearchBaseTestCase, TestCase):
+        """
+        Test cases for Elasticsearch 8+
+        """
