@@ -3631,3 +3631,54 @@ class ESModule6:
             )
         except self.elasticsearch.exceptions.TransportError as err:
             raise CommandExecutionError(f"Cannot flush, server returned errors {str(err)}") from err
+
+    def flush_synced(
+        self,
+        hosts=None,
+        profile=None,
+        index=None,
+        allow_no_indices=None,
+        expand_wildcards=None,
+        ignore_unavailable=None,
+    ):
+        """
+        # pylint: disable=line-too-long
+        .. versionadded:: 3005.1
+
+        index: A comma-separated list of index names; use _all or empty string
+            for all indices
+        allow_no_indices: Whether to ignore if a wildcard indices expression resolves
+            into no concrete indices. (This includelastic _all string or when no indices
+            have been specified)
+        expand_wildcards: Whether to expand wildcard expression to concrete indices
+            that are open, closed or both.
+            Valid valuelastic are::
+
+                all - Expand to open and closed indices.
+                open - Expand only to open indices.
+                closed - Expand only to closed indices.
+                none - Wildcard expressions are not accepted.
+
+        ignore_unavailable: Whether specified concrete indices should be ignored
+            when unavailable (missing or closed)
+
+        The defaults settings for the above parameters depend on the API being used.
+
+        CLI Example:
+
+        .. code-block:: bash
+
+         salt myminion elasticsearch.flush index='index1,index2' ignore_unavailable=True
+           allow_no_indices=True expand_wildcards='all'
+        """
+
+        self._set_elastic(hosts=hosts, profile=profile)
+        try:
+            return self.elastic.indices.flush(
+                index=index,
+                allow_no_indices=allow_no_indices,
+                expand_wildcards=expand_wildcards,
+                ignore_unavailable=ignore_unavailable,
+            )
+        except self.elasticsearch.exceptions.TransportError as err:
+            raise CommandExecutionError(f"Cannot flush, server returned errors {str(err)}") from err
