@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.0.5](https://github.com/cesan3/salt-ext-elasticsearch/compare/0.0.4...0.0.5) - 2023-11-06
+- fix: add flush_synced method to ES6 module by @cesan3 in https://github.com/cesan3/salt-ext-elasticsearch/pull/8
+
 ## [0.0.4](https://github.com/cesan3/salt-ext-elasticsearch/compare/0.0.3...0.0.4) - 2023-11-06
 - fix: update test workflow by @cesan3 in https://github.com/cesan3/salt-ext-elasticsearch/pull/6
 
