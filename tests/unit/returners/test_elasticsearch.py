@@ -1,17 +1,37 @@
+"""
+Test the elasticsearch returner
+"""
 import pytest
-import saltext.elasticsearch.returners.elasticsearch_mod as elasticsearch_returner
+import saltext.elasticsearch.returners.elasticsearch_mod as elasticsearch_return
 
+from tests.support.mock import MagicMock
+from tests.support.mock import patch
+from tests.support.unit import TestCase
+
+HAS_ELASTIC = True
+try:
+    import elasticsearch as elastic
+except Exception:  # pylint: disable=broad-except
+    HAS_ELASTIC = False
 
 @pytest.fixture
 def configure_loader_modules():
-    module_globals = {
-        "__salt__": {"this_does_not_exist.please_replace_it": lambda: True},
-    }
-    return {
-        elasticsearch_returner: module_globals,
-    }
+    return {elasticsearch_return: {}}
 
 
-def test_replace_this_this_with_something_meaningful():
-    assert "this_does_not_exist.please_replace_it" in elasticsearch_returner.__salt__
-    assert elasticsearch_returner.__salt__["this_does_not_exist.please_replace_it"]() is True
+@pytest.mark.skipif(
+    not HAS_ELASTIC,
+    reason="Install elasticsearch-py before running Elasticsearch unit tests.",
+)
+class ElasticSearchReturnerTestCase(TestCase):
+    def test__virtual_with_elasticsearch(self):
+        """
+        Test __virtual__ function when elasticsearch
+        and the elasticsearch module is not available
+        """
+        with patch.dict(
+            elasticsearch_return.__salt__, {"elasticsearch.index_exists": MagicMock()}
+        ):
+            result = elasticsearch_return.__virtual__()
+            expected = "elasticsearch"
+            assert expected == result
