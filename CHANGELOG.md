@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.0.6](https://github.com/cesan3/salt-ext-elasticsearch/compare/0.0.5...0.0.6) - 2023-11-06
+- fix: obsoletes saltext.elasticsearch8 by @cesan3 in https://github.com/cesan3/salt-ext-elasticsearch/pull/10
+
 ## [0.0.5](https://github.com/cesan3/salt-ext-elasticsearch/compare/0.0.4...0.0.5) - 2023-11-06
 - fix: add flush_synced method to ES6 module by @cesan3 in https://github.com/cesan3/salt-ext-elasticsearch/pull/8
 
