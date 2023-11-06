@@ -7,6 +7,7 @@ requires = [
     "python-semantic-release>=7.16.0"
 ]
 build-backend = "setuptools.build_meta"
+obsoletes = ["saltext.elasticsearch8"]
 
 [tool.setuptools_scm]
 write_to = "src/saltext/elasticsearch/version.py"
