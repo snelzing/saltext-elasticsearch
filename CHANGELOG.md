@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.0.8](https://github.com/cesan3/salt-ext-elasticsearch/compare/0.0.7...0.0.8) - 2023-11-06
+- fix: add elasticsearch returner by @cesan3 in https://github.com/cesan3/salt-ext-elasticsearch/pull/14
+
 ## [0.0.7](https://github.com/cesan3/salt-ext-elasticsearch/compare/0.0.6...0.0.7) - 2023-11-06
 - Revert "fix: obsoletes saltext.elasticsearch8" by @cesan3 in https://github.com/cesan3/salt-ext-elasticsearch/pull/12
 
