@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.0.0](https://github.com/cesan3/salt-ext-elasticsearch/compare/0.0.8...1.0.0) - 2023-11-08
+- Merge upstream by @cesan3 in https://github.com/cesan3/salt-ext-elasticsearch/pull/16
+
 ## [0.0.8](https://github.com/cesan3/salt-ext-elasticsearch/compare/0.0.7...0.0.8) - 2023-11-06
 - fix: add elasticsearch returner by @cesan3 in https://github.com/cesan3/salt-ext-elasticsearch/pull/14
 
