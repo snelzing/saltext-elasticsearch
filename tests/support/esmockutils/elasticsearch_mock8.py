@@ -609,7 +609,7 @@ class MockElastic:
         Mock of ping method
         """
         if self.failure:
-            raise TransportError("customer error", (123, 0))
+            return False
         return True
 
     @eswrapper
