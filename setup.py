@@ -1,4 +1,5 @@
 # pylint: disable=missing-module-docstring
+import os
 import sys
 
 import semantic_release
@@ -11,4 +12,8 @@ except ImportError:
     pass
 
 if __name__ == "__main__":
-    setuptools.setup(use_scm_version=True)
+    module_version = os.environ.get("SALTEXT_ES_MODULE_VERSION", None)
+    if module_version is not None:
+        setuptools.setup(version=module_version)
+    else:
+        setuptools.setup(use_scm_version=True)
