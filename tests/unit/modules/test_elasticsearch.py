@@ -1829,4 +1829,3 @@ else:
                 pytest.raises(
                     CommandExecutionError, elasticsearch_module.template_exists, "foo"
                 )
-

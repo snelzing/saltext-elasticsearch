@@ -5,7 +5,7 @@ Elasticsearch - A distributed RESTful search and analytics server for Elasticsea
 Module to provide Elasticsearch compatibility to Salt
 (compatible with Elasticsearch version 8+).  Copied from elasticsearch.py module and updated.
 
-.. versionadded:: 3005.1-4
+.. versionadded:: 3005.1
 
 :codeauthor: Cesar Sanchez <cesan3@gmail.com>
 
@@ -171,7 +171,7 @@ def ping(
     allow_failure=False,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Test connection to Elasticsearch instance. This method does not fail if not explicitly specified.
 
@@ -237,7 +237,7 @@ def node_info(
     timeout=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Return Elasticsearch node information.
 
@@ -306,7 +306,7 @@ def cluster_health(
     """
     # pylint: disable=line-too-long
 
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Return Elasticsearch cluster health.
 
@@ -405,7 +405,7 @@ def cluster_allocation_explain(
     shard=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Return Elasticsearch cluster allocation explain
 
@@ -465,7 +465,7 @@ def cluster_pending_tasks(
     pretty=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Returns a list of any cluster-level changelastic (e.g. create index, update mapping,
     allocate or fail shard) which have not yet been executed.
@@ -512,7 +512,7 @@ def cluster_stats(
     timeout=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Return Elasticsearch cluster stats.
 
@@ -564,7 +564,7 @@ def cluster_get_settings(
     timeout=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Return Elasticsearch cluster settings.
 
@@ -1600,7 +1600,7 @@ def index_open(
     wait_for_active_shards=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Open specified index.
 
@@ -2356,7 +2356,7 @@ def index_template_get(
     pretty=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Retrieve template definition of index or index/type
 
@@ -2406,7 +2406,7 @@ def geo_ip_stats(
     pretty=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Returns statistical information about geoip databases
 
@@ -2442,7 +2442,7 @@ def processor_grok(
     pretty=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Returns a list of built-in patterns
 
@@ -2481,7 +2481,7 @@ def pipeline_get(
     summary=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Retrieve Ingest pipeline definition. Available since Elasticsearch 5.0.
 
@@ -2532,7 +2532,7 @@ def pipeline_delete(
     timeout=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Delete Ingest pipeline. Available since Elasticsearch 5.0.
 
@@ -2591,7 +2591,7 @@ def pipeline_create(
 ):
     """
     # pylint: disable=line-too-long
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Create Ingest pipeline by supplied definition. Available since Elasticsearch 5.0.
 
@@ -2674,7 +2674,7 @@ def pipeline_simulate(
 ):
     """
     # pylint: disable=line-too-long
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Simulate existing Ingest pipeline on provided data. Available since Elasticsearch 5.0.
 
@@ -2726,7 +2726,7 @@ def script_get(
     pretty=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Obtain existing script definition.
 
@@ -2776,7 +2776,7 @@ def script_create(
     """
     Create cript by supplied script definition
 
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     script
         Script definition
@@ -2822,7 +2822,7 @@ def script_delete(
     timeout=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Delete existing script.
 
@@ -2872,7 +2872,7 @@ def repository_get(
     pretty=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Get existing repository details.
 
@@ -2921,7 +2921,7 @@ def repository_cleanup(
     timeout=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Removelastic stale data from repository
 
@@ -2978,7 +2978,7 @@ def repository_create(
 ):
     """
     # pylint: disable=line-too-long
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Create repository for storing snapshots. Note that shared repository paths have to be specified in path.repo
     Elasticsearch configuration option.
@@ -3051,7 +3051,7 @@ def repository_delete(
     timeout=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Delete existing repository.
 
@@ -3101,7 +3101,7 @@ def repository_verify(
     timeout=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Obtain list of cluster nodes which successfully verified this repository.
 
@@ -3151,7 +3151,7 @@ def snapshot_status(
     pretty=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Obtain status of all currently running snapshots.
 
@@ -3205,7 +3205,7 @@ def snapshot_clone(
     timeout=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Clonelastic indices from one snapshot into another snapshot in the same repository.
 
@@ -3272,7 +3272,7 @@ def snapshot_get(
     verbose=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Obtain snapshot residing in specified repository.
 
@@ -3391,7 +3391,7 @@ def snapshot_create(
 ):
     """
     # pylint: disable=line-too-long
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Create snapshot in specified repository by supplied definition.
 
@@ -3492,7 +3492,7 @@ def snapshot_restore(
 ):
     """
     # pylint: disable=line-too-long
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Restore existing snapshot in specified repository by supplied definition.
 
@@ -3571,7 +3571,7 @@ def snapshot_delete(
     pretty=None,
 ):
     """
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     Delete snapshot from specified repository.
 
@@ -3625,7 +3625,7 @@ def flush(
 ):
     """
     # pylint: disable=line-too-long
-    .. versionadded:: 3005.1-4
+    .. versionadded:: 3005.1
 
     index: A comma-separated list of index names; use _all or empty string
         for all indices
