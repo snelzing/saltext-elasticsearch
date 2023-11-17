@@ -107,6 +107,8 @@ try:
     import elasticsearch
 
     HAS_ELASTICSEARCH = True
+    ES_MAJOR_VERSION = elasticsearch.__version__[0]
+    logging.getLogger("elasticsearch").setLevel(logging.CRITICAL)
 except ImportError:
     HAS_ELASTICSEARCH = False
     ES_MAJOR_VERSION = 0
@@ -125,9 +127,14 @@ def __virtual__():
     if not HAS_ELASTICSEARCH:
         return (
             False,
-            "Elasticsearch module not availble.  Check that the elasticsearch library"
-            " is installed.",
+            "Cannot load module elasticsearch: elasticsearch librarielastic not found",
         )
+    if ES_MAJOR_VERSION < 8:
+        return (
+            False,
+            "Cannot load the module, elasticserach version is not 8+"
+        )
+
     return __virtualname__
 
 def _get_options(ret=None):
@@ -333,7 +340,7 @@ def returner(ret):
 
     # Post the payload
     ret = __salt__["elasticsearch.document_create"](
-        index=index, doc_type=options["doc_type"], body=salt.utils.json.dumps(data)
+        index=index, document=salt.utils.json.dumps(data)
     )
 
 
@@ -358,9 +365,8 @@ def event_return(events):
 
     ret = __salt__["elasticsearch.document_create"](
         index=index,
-        doc_type=doc_type,
         id=uuid.uuid4(),
-        body=salt.utils.json.dumps(data),
+        document=salt.utils.json.dumps(data),
     )
 
 
@@ -390,7 +396,7 @@ def save_load(jid, load, minions=None):
     }
 
     ret = __salt__["elasticsearch.document_create"](
-        index=index, doc_type=doc_type, id=jid, body=salt.utils.json.dumps(data)
+        index=index, id=jid, document=salt.utils.json.dumps(data)
     )
 
 
@@ -406,7 +412,7 @@ def get_load(jid):
     doc_type = options["master_job_cache_doc_type"]
 
     data = __salt__["elasticsearch.document_get"](
-        index=index, id=jid, doc_type=doc_type
+        index=index, id=jid
     )
     if data:
         return salt.utils.json.loads(data)
