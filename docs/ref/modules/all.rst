@@ -9,6 +9,5 @@ Execution Modules
     :toctree:
 
     saltext.elasticsearch.modules.__init__
-    saltext.elasticsearch.modules.elasticsearch_mod
-    saltext.elasticsearch.modules.es_module_6
-    saltext.elasticsearch.modules.es_module_8
+    saltext.elasticsearch.modules.elasticsearch6_mod
+    saltext.elasticsearch.modules.elasticsearch8_mod
