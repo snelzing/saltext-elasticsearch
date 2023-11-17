@@ -1,5 +1,6 @@
 # Changelog
 
+
 ## [1.1.1](https://github.com/cesan3/salt-ext-elasticsearch/compare/1.1.0...1.1.1) - 2023-11-17
 - fix: pass correct id attribute name by @cesan3 in https://github.com/cesan3/salt-ext-elasticsearch/pull/20
 
