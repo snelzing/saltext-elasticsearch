@@ -365,7 +365,7 @@ def event_return(events):
 
     ret = __salt__["elasticsearch.document_create"](
         index=index,
-        id=uuid.uuid4(),
+        id_=uuid.uuid4(),
         document=salt.utils.json.dumps(data),
     )
 
@@ -396,7 +396,7 @@ def save_load(jid, load, minions=None):
     }
 
     ret = __salt__["elasticsearch.document_create"](
-        index=index, id=jid, document=salt.utils.json.dumps(data)
+        index=index, id_=jid, document=salt.utils.json.dumps(data)
     )
 
 
